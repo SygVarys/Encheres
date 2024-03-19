@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+.blocone {
+	display: flex;
+	
+	flex-flow: wrap-reverse;
+}
+.blocone input{
+	display: flex;
+	gap: 30px;
+    height: 25px;
+    margin: 10px;
+    width: 100px; 
+  	margin-right: 10px;
+  	
+}
+
+.blocone label{
+	display: flex;
+	gap: 30px;
+    height: 25px;
+    margin: 10px;
+	
+}
+
+.bloctwo {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.bloctwo button{
+	display: flex;
+	align-items: center;
+    margin: 15px;
+    padding: 10px 25px;
+}
+
+.below{
+	display: flex;
+	flex-direction: column;
+}
+
+.blocthree button {
+	display: flex;
+	margin: 15px;
+    padding: 5px 140px;
+    font-size: 25px;
+}
+
+.input{
+	border: solid;
+}
+
+.button{
+	padding: 10px 75px;
+	box-shadow: 5px 5px;
+}

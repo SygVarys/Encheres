@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" th:href="@{/css/profil.css}" />
+</head>
+
+<body>
+	
+	<header>
+		 
+	 	<div th:replace="~{fragment/fragment-entete::frag-entete}"></div>
+		
+		 
+	</header>
+	
+	<div class="layout">
+		<h1>PROFIL</h1>
+
+		<div sec:authorize="isAuthenticated()">
+			Authenticated as <span sec:authentication="name"></span></div>
+
+		<p>Nom d'utilisateur: <span th:text="${#authentication.name}"></span></p>
+
+		<!--Pseudo
+		Nom
+		Prénom
+		Email
+		Téléphone
+		Rue
+		Code postal
+		Ville -->
+
+		
+		<ul class="test">
+			<li th:text="'Pseudo : ' + ${utilisateur.pseudo}"></li>
+			<li th:text="'NOM : ' + ${utilisateur.nom}"></li>
+			<li th:text="'Prénom : ' + ${utilisateur.prenom}"></li>
+			<li th:text="'Email : ' + ${utilisateur.email}"></li>
+			<li th:text="'Téléphone : ' + ${utilisateur.telephone}"></li>
+			<li th:text="'Rue : ' + ${utilisateur.rue}"></li>
+			<li th:text="'Code Postal : ' + ${utilisateur.codePostal}"></li>
+			<li th:text="'Ville : ' + ${utilisateur.ville}"></li>
+			<li th:text="'Solde  : ' + ${utilisateur.credit} + ' points'"></li>
+		</ul>
+
+		<a href="/modifProfil">
+			
+		<div class="bouton">	
+			<button>Modifier</button>
+		</div>
+		</a>
+
+	</div>
+</body>
+
+</html>

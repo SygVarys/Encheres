@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>page inscription</title>
+
+	<link rel="stylesheet" th:href="@{/css/erreur.css}" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" th:href="@{/css/inscription.css}" />
+</head>
+
+<body>
+
+	<header>
+
+		<div th:replace="~{fragment/fragment-entete::frag-entete}"></div>
+
+
+	</header>
+
+	<h1>Mon profil</h1>
+
+	<div class="layout">
+
+		<form th:action="@{/inscription}" method="post" th:object="${utilisateur}">
+
+			<!-- bloc affichage des erreurs du bindingResult-->
+			<ul th:if="${#fields.hasErrors('*')}">
+				<li class="error">
+					Veuillez vérifier vos champs.
+				</li>
+				<ul class="error">
+					<li th:each="err :${#fields.globalErrors()}" th:text="${err}"></li>
+				</ul>
+			</ul>
+
+			<div class="registration">
+
+				<div class="gauche">
+
+					<div class="align">
+
+						<label for="pseudo">Pseudo :</label>
+						<input type="text" id="pseudo" th:field="*{pseudo}"><br>
+						<div th:replace="~{fragment/fragment-erreur :: frag-error(pseudo)}"></div>
+					</div>
+
+					<div class="align">
+
+						<label for="prenom">Prénom :</label>
+						<input type="text" id="prenom" th:field="*{prenom}"><br>
+						<div th:replace="~{fragment/fragment-erreur :: frag-error(prenom)}"></div>
+					</div>
+
+					<div class="align">
+
+						<label for="telephone">Téléphone :</label>
+						<input type="tel" id="telephone" th:field="*{telephone}"><br>
+						<div th:replace="~{fragment/fragment-erreur :: frag-error(telephone)}"></div>
+					</div>
+
+					<div class="align">
+
+						<label for="codePostal">Code Postal :</label>
+						<input type="text" id="codePostal" th:field="*{codePostal}"><br>
+						<div th:replace="~{fragment/fragment-erreur :: frag-error(codePostal)}"></div>
+					</div>
+
+					<div class="align">
+
+						<label for="motDePasse">Mot de passe :</label>
+						<input type="password" id="motDePasse" th:field="*{motDePasse}"><br>
+					</div>
+
+					
+
+				</div>
+
+
+				<div class="droite">
+					
+					<div class="align">
+
+						<label for="nom">Nom :</label>
+						<input type="text" id="nom" th:field="*{nom}"><br>
+						<div th:replace="~{fragment/fragment-erreur :: frag-error(nom)}"></div>
+					</div>
+
+					<div class="align">
+
+						<label for="email">Email :</label>
+						<input type="email" id="email" th:field="*{email}"><br>
+						<div th:replace="~{fragment/fragment-erreur :: frag-error(email)}"></div>
+					</div>
+
+					<div class="align">
+
+						<label for="rue">Rue :</label>
+						<input type="text" id="rue" th:field="*{rue}"><br>
+						<div th:replace="~{fragment/fragment-erreur :: frag-error(rue)}"></div>
+					</div>
+
+					<div class="align">
+
+						<label for="ville">Ville :</label>
+						<input type="text" id="ville" th:field="*{ville}"><br>
+						<div th:replace="~{fragment/fragment-erreur :: frag-error(ville)}"></div>
+					</div>
+
+					<div class="align">
+
+						<label for="confirmerMotDePasse">Confirmer le mot de passe :</label>
+						<input type="password" id="confirmerMotDePasse" name="confirmerMotDePasse"><br>
+					</div>
+				</div>
+
+
+
+			</div>
+		
+
+
+		<div class="test">
+
+			<div class="bouton">
+				<button type="submit" class="button">Créer</button>
+			</div>
+</form>
+			<div class="bouton">
+				<form action="/annulerInscription" method="get">
+					<input type="submit" name="Annuler" value="annuler" class="button" />
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+
+
+	
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http:\\www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Détails de l'article pour les acheteurs</title>
+
+	<link rel="stylesheet" th:href="@{/css/erreur.css}" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" th:href="@{/css/detailVente.css}" />
+</head>
+
+<body>
+
+	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+
+	<!--<aside>Photo de l'article</aside>-->
+	<main>
+		<h1>Détail vente :</h1>
+
+		<ul>
+			<li th:text="'Article : ' + ${articleVendu.nomArticle}"></li>
+			<li th:text="'Description : ' + ${articleVendu.description}"></li>
+
+			<li th:text="'Categorie : ' + ${articleVendu.categorieArticle.libelle}"></li>
+
+			<li
+				th:text="'Meilleure offre : ' + ${articleVendu.prixVente}+' points'+' ' + 'par' + ' ' + ${utilisateur.pseudo}">
+			</li>
+
+			<li th:text="'Mise à prix : ' + ${articleVendu.miseAPrix}"></li>
+
+			<li th:text="'Fin enchère : ' + ${articleVendu.dateFinEncheres}"></li>
+
+		</ul>
+
+		<fieldset>
+
+			<legend>Retrait</legend>
+
+			<label for="rue">Rue :</label>
+			<input type="text" id="rue" th:value="${retrait.rue}"><br>
+
+			<label for="codePostal">Code Postal :</label>
+			<input type="text" id="codePostal" th:value="${retrait.codePostal}"><br>
+
+			<label for="ville">Ville :</label>
+			<input type="text" id="ville" th:value="${retrait.ville}"><br>
+
+		</fieldset>
+
+		<ul>
+
+			<li th:text="'Vendeur : ' + ${articleVendu.vendeur.pseudo}"></li>
+					
+		</ul>
+
+
+
+
+		<form sec:authorize="isAuthenticated()" th:action="@{/detailVente}" method="post" th:object="${enchere}">
+			<input type="hidden" th:value="${articleVendu.noArticle}" th:field="*{idArticle}" />
+			<input type="hidden" th:value="${utilisateur.id}" th:field="*{idUtilisateur}" />
+			<label for="proposition"> Ma proposition :</label>
+			<input type="number" id="proposition" name="montantEnchere" th:value="*{montantEnchere}"
+				th:field="*{montantEnchere}" />
+			<button type="submit">Enchérir</button>
+		</form>
+
+
+
+
+
+
+
+	</main>
+
+
+</body>
+
+</html>

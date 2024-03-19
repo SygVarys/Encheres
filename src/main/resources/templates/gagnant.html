@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" th:href="@{/css/erreur.css}" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+
+	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+
+
+	<main>
+		<h1>Vous avez remporté la vente</h1>
+
+		<ul>
+
+			<li th:text="'Article : ' + ${articleVendu.nomArticle}"></li>
+			<li th:text="'Description : ' + ${articleVendu.description}"></li>
+			<li th:text="'Meilleure offre : ' + ${articleVendu.prixVente}+' points'+' ' + 'par' + ' ' + ${utilisateur.pseudo}"></li>
+			<li th:text="'Mise à prix : ' + ${articleVendu.miseAPrix}"></li>
+			<li th:text="'Vendeur : ' + ${articleVendu.vendeur.pseudo}"></li>
+
+		</ul>
+
+
+
+		<fieldset>
+
+			<legend>Retrait</legend>
+
+			<label for="rue">Rue :</label>
+			<input type="text" id="rue" th:value="${retrait.rue}"><br>
+
+			<label for="codePostal">Code Postal :</label>
+			<input type="text" id="codePostal" th:value="${retrait.codePostal}"><br>
+
+			<label for="ville">Ville :</label>
+			<input type="text" id="ville" th:value="${retrait.ville}"><br>
+
+		</fieldset>
+		
+		<ul>
+			<li th:text="'Vendeur : ' + ${articleVendu.vendeur.pseudo}"></li>
+			<li th:text="'Téléphone : ' + ${articleVendu.vendeur.telephone}"></li> 			
+ 		</ul>
+ 		
+ 		<div class="bouton">
+				<button type="submit" class="button">Retour</button>
+		</div>
+
+	</main>
+</body>
+
+</html>

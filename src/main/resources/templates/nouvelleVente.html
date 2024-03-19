@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Nouvelle vente</title>
+
+	<link rel="stylesheet" th:href="@{/css/erreur.css}" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" th:href="@{/css/nouvelleVente.css}" />
+
+</head>
+
+<body>
+	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+
+	<div class="aligne">
+		<form th:action="@{/nouvelleVente}" method="post" th:object="${articleVendu}">
+
+			<!-- bloc affichage des erreurs du bindingResult-->
+			<ul th:if="${#fields.hasErrors('*')}">
+				<li class="error">
+					Veuillez vérifier vos champs.
+				</li>
+				<ul class="error">
+					<li th:each="err :${#fields.globalErrors()}" th:text="${err}"></li>
+				</ul>
+			</ul>
+
+			<div class="newVente">
+				<label for="nomArticle">Article :</label>
+				<input type="text" id="nomArticle" th:field="*{nomArticle}"><br>
+				<div th:replace="~{fragment/fragment-erreur :: frag-error(nomArticle)}"></div>
+			</div>
+
+			<div class="newVente">
+				<label for="description">Description :</label><br>
+				<textarea name="description" id="description" th:field="*{description}"> </textarea> <br>
+				<div th:replace="~{fragment/fragment-erreur :: frag-error(description)}"></div>
+			</div>
+
+			<div class="newVente">
+				<label for="selectCategories">Catégorie :
+					<select name="categorieArticle" id="selectCategories" th:field="*{categorieArticle}">
+						<option th:each="c : ${categoriesSession}" th:value="${c.id}" th:text="${c.libelle}"></option>
+					</select>
+				</label>
+			</div>
+
+			<div class="newVente">
+				<div>
+					Photo de l'article :
+				</div>
+			</div>
+
+			<div class="newVente">
+				<label for="miseAPrix">Mise à prix :</label>
+				<input type="number" id="miseAPrix" th:field="*{miseAPrix}"><br>
+			</div>
+
+			<div class="newVente">
+				<label for="dateDebutEncheres">Début de l'enchère :</label>
+				<input type="date" id="dateDebutEncheres" th:field="*{dateDebutEncheres}"><br>
+			</div>
+
+			<div class="newVente">
+				<label for="dateFinEncheres">Fin de l'enchère :</label>
+				<input type="date" id="dateFinEncheres" th:field="*{dateFinEncheres}"><br>
+			</div>
+
+	
+		
+
+			<fieldset>
+				<legend>Retrait</legend>
+				
+					
+					<label for="rue">Rue :</label>
+					<input type="text" id="rue" th:field="*{lieuRetrait.rue}"><br>
+					<!-- <div th:replace="~{fragment/fragment-erreur :: frag-error(rue)}" ></div>  -->
+					
+					<label for="codePostal">Code Postal :</label>
+					<input type="text" id="codePostal" th:field="*{lieuRetrait.codePostal}"><br>
+					<!-- <div th:replace="~{fragment/fragment-erreur :: frag-error(codePostal)}" ></div> -->
+			
+					<label for="ville">Ville :</label>
+					<input type="text" id="ville" th:field="*{lieuRetrait.ville}"><br>
+					<!-- <div th:replace="~{fragment/fragment-erreur :: frag-error(ville)}" ></div> -->
+			
+
+			</fieldset>
+
+
+
+
+
+
+			<button type="submit">Créer</button>
+
+			<button type="reset">Annuler </button>
+
+
+
+		</form>
+
+	</div>
+
+
+
+
+
+</body>
+
+</html>

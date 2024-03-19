@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<meta charset="UTF-8">
+	<title>encheres</title>
+
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" th:href="@{/css/login.css}" />
+
+</head>
+
+<body>
+	<header>
+
+		<div th:replace="~{fragment/fragment-entete::frag-entete}"></div>
+
+
+	</header>
+
+	<div class="layout">
+		
+		<div sec:authorize="isAuthenticated()">
+					Authenticated as <span sec:authentication="name"></span></div>
+				<p>Nom d'utilisateur: <span th:text="${#authentication.name}"></span></p>
+
+		<div class="login">
+
+			<form th:action="@{/login}" method="post">
+				<!-- block d'affichage des erreurs-->
+				<ul>
+					<!--<li th:if="${param.error}">pseudo ou le mot de passe est incorrect</li>-->
+
+				</ul>
+
+				<div class="blocone">
+					<label for="pseudo">pseudo</label>
+					<input type="text" id="idPseudo" name="username" />
+
+					<label for="idmotDePasse">Mot de passe</label>
+					<input type="password" id="idmotDePasse" name="password" />
+				</div>
+
+				<div class="bloctwo">
+					<button type="submit">Connexion</button>
+					<div class="below">
+						<label for="seSouvenir">Se souvenir de moi :</label>
+						<input type="checkbox" id="seSouvenir" name="seSouvenir">
+						<a href="/mdp-oublie">Mot de passe oublié ?</a>
+					</div>
+				</div>
+
+				
+			</form>
+		</div>
+
+		<div class="blocthree">
+			<a href="/inscription">
+				<button>Inscription</button>
+			</a>
+		</div>
+
+
+
+	</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+
+	<title>ENI-encheres</title>
+	<link rel="stylesheet" th:href="@{/css/erreur.css}" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" th:href="@{/css/encheresConnecte.css}" />
+
+</head>
+
+
+
+<header>
+
+	<div th:replace="~{fragment/fragment-entete::frag-entete}"></div>
+
+
+</header>
+
+
+<div class="layout">
+
+	<h1>Liste des encheres </h1>
+
+
+
+
+	<form th:action="@{/encheresConnecte}" method="post">
+
+		<div class="alignement">
+			<div class="filtre">
+				filtre :
+				<input type="search" placeholder="Le nom de l'article contient" />
+
+				<select name="categorieId">
+
+					<option th:each="categorie : ${categories}" th:value="${categorie.id}"
+						th:text="${categorie.libelle}">
+					</option>
+				</select>
+			</div>
+
+			<div class="radio">
+				<div class="achat">
+
+					<input th:type="radio" th:value="achat" th:name="choixRecherche" checked /> Achat : <br />
+
+
+
+
+					<input th:type="checkbox" th:name="enchOuvertes" id="enchOuvertes" th:value="enchOuvertes" />
+					<label for="enchOuvertes">enchères ouvertes</label><br>
+
+
+					<input th:type="checkbox" th:name="enchEnCours" id="enchEnCours" th:value="enchEnCours" />
+					<label for="enchEnCours">enchères en cours</label><br>
+
+
+					<input th:type="checkbox" th:name="enchRemportees" id="enchRemportees" th:value="enchRemportees" />
+					<label for="enchRemportees">mes enchères remportées :</label><br>
+
+
+				</div>
+
+
+				<div class="vente">
+					<input th:type="radio" th:value="mesVentes" th:name="choixRecherche" /> Mes ventes : <br />
+
+
+					<input th:type="checkbox" th:name="ventesEnCours" id="ventesEnCours" th:value="ventesEnCours"
+						disabled />
+					<label for="ventesEnCours">mes ventes en cours</label><br>
+
+					<input th:type="checkbox" th:name="venteNonDebutee" id="venteNonDebutee" th:value="venteNonDebutee"
+						disabled />
+					<label for="venteNonDebutee">ventes non débutées</label><br>
+
+					<input th:type="checkbox" th:name="ventesTerminees" id="ventesTerminees" th:value="ventesTerminees"
+						disabled />
+					<label for="ventesTerminees">ventes terminées</label><br>
+				</div>
+
+
+			</div>
+		</div>
+
+		<div class="bouton">
+			<button type="submit"> Rechercher </button>
+		</div>
+	</form>
+
+
+</div>
+
+
+<div class="affichageArticle">
+	<div th:each="article : ${articlesVendus}" class="product-grid">
+
+
+
+		<a th:href="@{'detailVente?noArticle=' + ${article.noArticle}}">
+			<h1 th:text="${article.nomArticle}"></h1>
+
+			<ul>
+				<li th:text="${'Prix : ' + article.prixVente + '€'}"></li>
+				<li th:text="${'Fin enchère : ' + article.dateFinEncheres}"></li>
+				<li th:text="${'Vendeur : ' + article.vendeur.pseudo}"></li>
+			</ul>
+		</a>
+	</div>
+</div>
+
+
+
+<script src="javascript/script.js" th:src="@{javascript/script.js}"></script>
+
+</body>
+
+</html>

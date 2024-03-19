@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.product-grid {
+	 display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border: black solid 2px;
+    border-radius: 25px;
+    white-space: pre;
+    border-top-width: thick;
+    align-items: center;
+    width: 250px;
+      
+}
+
+.vente h1{
+	white-space: pre-line;
+
+}
+
+
+.vente{
+	
+    display: flex;
+    flex-wrap: wrap;
+    
+    gap: 250px;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+    
+}

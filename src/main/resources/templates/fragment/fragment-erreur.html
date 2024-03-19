@@ -1,0 +1,4 @@
+
+<ul xmls:th="http:\\www.thymeleaf.org"  th:fragment="frag-error(inputName)"  th:if="${#fields.hasErrors(inputName)}">
+	<li th:each="err:${#fields.errors(inputName)}" th:text="${err}" class="error">></li>
+</ul>

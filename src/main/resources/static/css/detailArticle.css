@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+main{
+	display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+h1{
+	display: flex;
+	justify-content: center
+}
+
+main ul {
+	display: flex;
+	list-style-type:none;
+	flex-direction: column;
+	padding: 0px;
+	gap: 20px;
+	
+}
+

@@ -1,0 +1,35 @@
+<header xmlns:th="http:\\www.thymeleaf.org" th:fragment="frag-entete">
+
+
+	<div class="generale">
+		
+		<div class="container">
+			<ul>
+				
+				<li sec:authorize="!isAuthenticated()"><a href="/encheres"><img src="image/marteau.png" alt="logo marteau d'enchere"></a></li>
+				<li sec:authorize="isAuthenticated()"><a href="/encheresConnecte?categorieId=0&ventesEnCours=null&venteNonDebutee=null&ventesTerminees=null"><img src="image/marteau.png" alt="logo marteau d'enchere"></a></li>
+				
+				<li sec:authorize="!isAuthenticated()"><a href="/encheres">ENI-Enchères</a></li>
+				<li sec:authorize="isAuthenticated()"><a href="/encheresConnecte?categorieId=0&ventesEnCours=null&venteNonDebutee=null&ventesTerminees=null">ENI-Enchères</a></li>
+
+
+			</ul>
+		</div>
+
+		<div class="connect">
+			<ul>
+				<li sec:authorize="!isAuthenticated()"><a href="/login">S'inscrire - Se connecter</a></li>
+
+
+				<li sec:authorize="isAuthenticated()"><a href="/encheresConnecte?categorieId=0&ventesEnCours=null&venteNonDebutee=null&ventesTerminees=null">Enchères</a></li>
+				<li sec:authorize="isAuthenticated()"><a href="/nouvelleVente">Vendre un article</a></li>
+				<li sec:authorize="isAuthenticated()"><a href="/profil">Mon profil</a></li>
+				<li sec:authorize="isAuthenticated()"><a href="/logout">Déconnexion</a></li>
+
+			</ul>
+		</div>
+	</div>
+
+
+
+

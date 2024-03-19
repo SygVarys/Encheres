@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Détails de l'article enregistré pour le vendeur</title>
+
+	<link rel="stylesheet" th:href="@{/css/erreur.css}" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" th:href="@{/css/detailArticle.css}" />
+</head>
+
+<body>
+	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+
+	<main>
+		<ul>
+			<li th:text="${'Article : ' + article.nomArticle}"></li>
+			<li th:text="${'Description : ' + article.description}"></li>
+			<li>Photo de l'article :</li>
+
+			<li th:text="'Meilleure offre : ' + ${article.prixVente}"></li>
+
+			<li th:text="${'Mise à prix : ' + article.miseAPrix}"></li>
+
+			<li th:text="${'Début enchère : ' + article.dateDebutEncheres}"></li>
+			<li th:text="${'Fin enchère : ' + article.dateFinEncheres}"></li>
+
+			<!--<li th:text="'Retrait : ' + ${article.lieuRetrait}"></li> -->
+
+			<li th:text="'Vendeur : ' + ${article.vendeur.pseudo}"></li>
+
+		</ul>
+
+
+
+
+
+		<form action="/supprimer" method="get">
+			<input type="submit" value="Annuler la vente" name="supprimer" />
+		</form>
+
+		<a href="/encheres">
+			<button>Back</button>
+		</a>
+
+	</main>
+</body>
+
+</html>

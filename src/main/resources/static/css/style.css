@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+
+.generale{
+	display: flex;
+    width: 100%;
+   
+    font-size: 25px;
+    flex-wrap: wrap;
+    
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    text-decoration: none;
+	list-style: none;
+	
+}
+
+.container ul{
+	display: flex;
+	flex-direction: column;
+}
+	
+a {
+	text-decoration: none;
+	color: black;
+	
+}	
+
+.generale ul{
+	list-style-type: none;
+	display: flex;
+	gap: 30px;
+}
+
+.connect {
+	display: flex;
+	text-decoration: none;
+	list-style: none;
+	flex-grow: 15px;
+}
+
+.layout{
+	display: flex;
+	align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  	margin: 50px;
+    
+   	font-size: 15px;
+    
+}
+
+
+
